@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //merge({a:1,b:2},{a:2,c:3})={a:2,b:2,c:3}
+    var ser=[{a:1,b:2,d:4,f:{a:123,b:234}},{a:2,c:3,f:{c:345}}];
+    var res={};
+    function merge(x){
+        console.log(x)
+        var key
+        var ke;
+        x.forEach(function as(value) {
+            // console.log(value);
+           for(key in value){
+                if(typeof(value[key])=="object"){
+                    res[key]=value[key];
+                    for(ke in value[key]){
+                        // console.log(value[key][ke]);
+                        res[key][ke]=value[key][ke];
+                        // console.log(res[key][ke]);
+                    }
+                } else {
+                    res[key]=value[key];
+                }
+                    console.log(res);
+           } 
+           return res;
+        });
+        // for(var key in x){
+        //     if(typeof(res[key])=="object"){
+        //         for(var ky in res[key]){
+        //             res[ky]=res[key][ky];
+        //         }
+        //     } else{
+        //        res[key]=x[key]; 
+        //     }
+            
+        // }
+        // for(var ke in y){
+        //     if(typeof(res[ke])=="object"){
+        //         for(var kiy in res[ke]){
+        //             res[kiy]=res[ke][kiy];
+        //         }
+        //     } else {
+        //         res[ke]=y[ke];
+        //     }
+        // }
+        return res;
+    }
+    console.log(merge(ser));
+</script>
+</html>
